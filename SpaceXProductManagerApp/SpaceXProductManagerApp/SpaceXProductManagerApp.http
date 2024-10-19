@@ -1,0 +1,6 @@
+@SpaceXProductManagerApp_HostAddress = http://localhost:5148
+
+GET {{SpaceXProductManagerApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
