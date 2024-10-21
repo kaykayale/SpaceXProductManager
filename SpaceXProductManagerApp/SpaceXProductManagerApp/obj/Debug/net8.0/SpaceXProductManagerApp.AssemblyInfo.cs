@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpaceXProductManagerApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb2a42fd1b5412c320542d03d95cfef8c39f44b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpaceXProductManagerApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpaceXProductManagerApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

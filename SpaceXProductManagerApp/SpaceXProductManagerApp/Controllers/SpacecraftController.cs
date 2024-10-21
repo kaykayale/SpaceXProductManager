@@ -33,6 +33,23 @@ public class SpacecraftController : ControllerBase
         return spacecraft;
     }
 
+    [HttpGet("{id}/components")]
+    public async Task<ActionResult<List<Component>>> GetSpacecraftComponentsInOrder(int id)
+    {
+        var spacecraft = await _context.Spacecrafts.Include(s => s.Components).FirstOrDefaultAsync(s => s.Id == id);
+        
+        if (spacecraft == null)
+        {
+            return NotFound();
+        }
+
+        // Create the service and get sorted components
+        SpacecraftService service = new SpacecraftService(_context);
+        var sortedComponents = service.TopologicalSort(spacecraft);
+
+        return sortedComponents;
+    }
+
     // POST: api/spacecraft
     [HttpPost]
     public async Task<ActionResult<Spacecraft>> CreateSpacecraft(Spacecraft spacecraft)

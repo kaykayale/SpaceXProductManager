@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddAuthorization();  // Add this line
+builder.Services.AddSwaggerGen();
 
 // Configure services for EF Core 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -25,6 +28,23 @@ builder.Services.AddCors(options =>
 
 // Build the application
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpaceX Product Manager API v1");
+    });
+}
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+
+
+
 
 // Apply the CORS policy before mapping endpoints
 app.UseCors("AllowFrontend");
